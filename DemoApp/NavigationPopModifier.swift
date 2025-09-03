@@ -30,6 +30,7 @@ struct NavigationPopModifier: ViewModifier {
 }
 
 extension View {
+    
     func onTapPop(_ count: Int, router: NavigationRouter) -> some View {
         self.modifier(NavigationPopModifier(router: router, popCount: count))
     }
@@ -37,4 +38,5 @@ extension View {
     func onTapPopToRoot(router: NavigationRouter) -> some View {
         self.modifier(NavigationPopModifier(router: router, popToRoot: true))
     }
+
 }
