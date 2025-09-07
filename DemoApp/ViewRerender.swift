@@ -182,8 +182,23 @@ struct DoNotUseViewModelView: View {
 @Observable
 class ObservableSignUpViewModel {
     
-    var email: String = ""
+    var email: String = "" {
+        didSet {
+            handleEmailChange(email)
+        }
+    }
     var password: String = ""
+    
+    func handleEmailChange(_ email: String) {
+        print("Email changed to: \(email)")
+        validateEmail(email)
+    }
+    
+    private func validateEmail(_ email: String) {
+        if email.contains("@") {
+            print("Email appears valid")
+        }
+    }
     
 }
 
@@ -218,6 +233,9 @@ struct ObservableEmailView: View {
                     .stroke(Color.gray, lineWidth: 1)
             )
             .padding(.horizontal)
+            .onChange(of: viewModel.email) { oldValue, newValue in
+                viewModel.handleEmailChange(newValue)
+            }
     }
 
 }
