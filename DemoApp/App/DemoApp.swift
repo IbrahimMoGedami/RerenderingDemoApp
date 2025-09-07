@@ -4,7 +4,9 @@ import SwiftUI
 struct DemoApp: App {
     var body: some Scene {
         WindowGroup {
-            UserListView()
+//            ViewRerender()
+//            SignUpView()
+            ObservableSignUpView()
         }
     }
 }
